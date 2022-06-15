@@ -26,17 +26,16 @@ int main(int argc, char * argv[])
         saveLog("User did not provide path to the files.");
         saveLog("Creating the test files for user...");
         //test 1
+        createFile1("test1_file1.bin", 100, 0x55); //1111 1111
+        createFile1("test1_file2.bin", 100, 0x55); //1111 1110
+
+        //test 2
         createFile1("test1_file1.bin", 100, 0xFF); //1111 1111
         createFile1("test1_file2.bin", 100, 0xFE); //1111 1110
-        //test 2
-        
-        /*
-            missing function to change 10 bits in the file
-        */
 
         //test 3
-        //createFile1("test3_file1.bin",400000000,0x55); 
-        //createFile1("test3_file2.bin",400000000,0x50);
+        createFile1("test3_file1.bin",400000000,0x55); 
+        createFile1("test3_file2.bin",400000000,0x50);
         saveLog("Test files are prepared");
         saveLog("Re-run with correct arguments ie: ./task_iv_ber.exe test1_file1.bin test1_file2.bin");
     }
