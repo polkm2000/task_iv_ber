@@ -25,19 +25,49 @@ int main(int argc, char * argv[])
     {
         saveLog("User did not provide path to the files.");
         saveLog("Creating the test files for user...");
-        //test 1
-        createFile1("test1_file1.bin", 100, 0x55); //1111 1111
-        createFile1("test1_file2.bin", 100, 0x55); //1111 1110
+        //badanie 1
+        bool repeat = true;
 
-        //test 2
-        createFile1("test1_file1.bin", 100, 0xFF); //1111 1111
-        createFile1("test1_file2.bin", 100, 0xFE); //1111 1110
+        while (repeat)
+        {
+            std::cout << "Sprawdzanie plikow - badanie/1, badanie/2, badanie/3, zakonczenie/4" << std::endl;
+            int choose;
+            std::cin >> choose;
+            switch (choose) {
+                //badanie 1
+            case 1:
+            {
+                createFile1("test1_badanie1.bin", 100, 0x55); //1111 1111
+                createFile1("test1_badanie2.bin", 100, 0x55); //1111 1110
+                results = calculateBer("test1_badanie1.bin", "test1_badnie2.bin");
+                printResult(results);
+                break;
+            }
+            //badanie 2
+            case 2:
+            {
+                createFile1("test2_badanie1.bin", 100, 0xFF); //1111 1111
+                createFile1("test2_badanie2.bin", 100, 0xFE); //1111 1110
+                results = calculateBer("test2_badanie1.bin", "test2_badanie2.bin");
+                printResult(results);
+                break;
+            }
+            //badanie 3
+            case 3:
+            {
 
-        //test 3
-        createFile1("test3_file1.bin",400000000,0x55); 
-        createFile1("test3_file2.bin",400000000,0x50);
+                createFile1("test3_badanie1.bin", 400000000, 0x55);
+                createFile1("test3_badanie2.bin", 400000000, 0x50);
+                results = calculateBer("test3_badanie1.bin", "test3_badanie2.bin");
+                printResult(results);
+                break;
+
+            }
+            }
+
+        }
         saveLog("Test files are prepared");
-        saveLog("Re-run with correct arguments ie: ./task_iv_ber.exe test1_file1.bin test1_file2.bin");
+        saveLog("Re-run with correct arguments ie: ./task_iv_ber.exe test1_badanie1.bin test1_badanie2.bin");
     }
     else //arguments are passed correctly
     {
